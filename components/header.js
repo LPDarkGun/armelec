@@ -14,7 +14,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 
-export default function Header() {
+export default function HeaderComponent() {
   const { t, i18n } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
 

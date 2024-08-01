@@ -8,7 +8,7 @@ const fadeIn = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 }
 
-export default function Projects() {
+export default function ProjectsComponent() {
   const { t } = useTranslation()
   return (
     <motion.section

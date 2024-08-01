@@ -17,7 +17,7 @@ const floatAnimation = {
   },
 }
 
-export default function Hero() {
+export default function HeroComponent() {
   const { t } = useTranslation()
   return (
     <motion.section

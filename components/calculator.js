@@ -25,7 +25,7 @@ const fadeIn = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 }
 
-export default function Calculator() {
+export default function CalculatorComponent() {
   const { t } = useTranslation()
 
   const [items, setItems] = useState([
