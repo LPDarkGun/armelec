@@ -5,7 +5,6 @@ import { initReactI18next } from "react-i18next"
 const resources = {
   en: {
     translation: {
-      // Translations for English
       header_title: "ARM Electro",
       home: "Home",
       services: "Services",
