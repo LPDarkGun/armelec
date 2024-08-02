@@ -109,12 +109,12 @@ export default function CalculatorComponent() {
     setItems(newItems)
   }
 
-  const toggleItem = (index) => {
-    const newItems = [...items]
-    newItems[index].enabled = !newItems[index].enabled
-    newItems[index].quantity = newItems[index].enabled ? 1 : 0
-    setItems(newItems)
-  }
+  // const toggleItem = (index) => {
+  //   const newItems = [...items]
+  //   newItems[index].enabled = !newItems[index].enabled
+  //   newItems[index].quantity = newItems[index].enabled ? 1 : 0
+  //   setItems(newItems)
+  // }
 
   const calculateGrandTotal = () => {
     const total = items.reduce(
@@ -184,7 +184,6 @@ export default function CalculatorComponent() {
                               parseFloat(e.target.value)
                             )
                           }
-                          disabled={!item.enabled}
                           className="border-blue-600 w-20 md:w-24"
                         />
                       </TableCell>
