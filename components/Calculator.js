@@ -30,73 +30,38 @@ export default function CalculatorComponent() {
 
   const [items, setItems] = useState([
     {
-      description: "item_silencer",
-      unit: "unit_piece",
-      quantity: 0,
-      price: 1500,
-      enabled: false,
-    },
-    {
-      description: "item_lightbox",
-      unit: "unit_piece",
-      quantity: 0,
-      price: 8000,
-      enabled: false,
-    },
-    {
-      description: "item_pipe",
+      description: "item_automatic_switch",
       unit: "unit_piece",
       quantity: 0,
       price: 2000,
       enabled: false,
     },
     {
-      description: "item_electric_boiler",
+      description: "item_socket",
       unit: "unit_piece",
       quantity: 0,
-      price: 25000,
+      price: 5000,
       enabled: false,
     },
     {
-      description: "item_led_lightbox",
+      description: "item_socket_with_earthing",
       unit: "unit_piece",
       quantity: 0,
-      price: 10000,
+      price: 5000,
       enabled: false,
     },
     {
-      description: "item_short_circuit",
+      description: "item_switch_1_place",
       unit: "unit_piece",
       quantity: 0,
-      price: 3000,
+      price: 5000,
       enabled: false,
     },
     {
-      description: "item_electric_casing",
+      description: "item_switch_2_places",
       unit: "unit_piece",
       quantity: 0,
-      price: 3500,
-      enabled: false,
-    },
-    {
-      description: "item_conditioner",
-      unit: "unit_piece",
-      quantity: 0,
-      price: 45000,
-      enabled: false,
-    },
-    {
-      description: "item_cable",
-      unit: "unit_piece",
-      quantity: 0,
-      price: 600,
-      enabled: false,
-    },
-    {
-      description: "item_drink_requirer",
-      unit: "unit_piece",
-      quantity: 0,
-      price: 4000,
+      price: 5000,
       enabled: false,
     },
   ])
@@ -225,39 +190,3 @@ export default function CalculatorComponent() {
     </motion.section>
   )
 }
-
-// {
-//   description: "Ավտոմատ անջատիչ",
-//   unit: "հատ",
-//   quantity: 0,
-//   price: 2000,
-//   enabled: false,
-// },
-// {
-//   description: "Վարդակ",
-//   unit: "հատ",
-//   quantity: 0,
-//   price: 5000,
-//   enabled: false,
-// },
-// {
-//   description: "Վարդակ հողանցումով",
-//   unit: "հատ",
-//   quantity: 0,
-//   price: 5000,
-//   enabled: false,
-// },
-// {
-//   description: "Անջատիչ 1 տեղ",
-//   unit: "հատ",
-//   quantity: 0,
-//   price: 5000,
-//   enabled: false,
-// },
-// {
-//   description: "Անջատիչ 2 տեղ",
-//   unit: "հատ",
-//   quantity: 0,
-//   price: 5000,
-//   enabled: false,
-// },

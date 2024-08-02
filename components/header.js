@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
+import Link from "next/link"
 
 export default function HeaderComponent() {
   const { t, i18n } = useTranslation()
@@ -22,8 +23,8 @@ export default function HeaderComponent() {
 
   const menuItems = [
     { id: "home", label: t("home") },
-    { id: "services", label: t("services") },
-    { id: "projects", label: t("projects") },
+    // { id: "services", label: t("services") },
+    // { id: "projects", label: t("projects") },
     { id: "calculator", label: t("calculator") },
     { id: "contact", label: t("contact") },
   ]
@@ -38,7 +39,7 @@ export default function HeaderComponent() {
       <div className="container mx-auto flex justify-between items-center">
         {/* Header Title */}
         <motion.h1
-          className="text-2xl md:text-3xl font-semibold text-black"
+          className="text-2xl md:text-3xl font-semibold text-black select-none cursor-default"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
@@ -59,6 +60,24 @@ export default function HeaderComponent() {
                 {item.label}
               </motion.a>
             ))}
+            <Link
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="/services"
+              target="_blank"
+              className="text-base font-normal hover:text-blue-700 transition duration-300"
+            >
+              {t("services")}
+            </Link>
+            <Link
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="/projects"
+              target="_blank"
+              className="text-base font-normal hover:text-blue-700 transition duration-300"
+            >
+              {t("services")}
+            </Link>
           </div>
           <Select
             onValueChange={handleLanguageChange}

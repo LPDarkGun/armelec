@@ -27,7 +27,7 @@ export default function ServicesComponent() {
       whileInView="visible"
       viewport={{ once: true }}
       variants={staggerChildren}
-      className="py-16 md:py-24 bg-white"
+      className="py-16 md:py-24 bg-white h-screen"
     >
       <div className="container mx-auto px-4">
         <motion.h2

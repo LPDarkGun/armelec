@@ -17,7 +17,7 @@ export default function ProjectsComponent() {
       whileInView="visible"
       viewport={{ once: true }}
       variants={fadeIn}
-      className="py-16 md:py-24 bg-gray-100"
+      className="py-16 md:py-24 bg-gray-100 h-screen"
     >
       <div className="container mx-auto px-4">
         <motion.h2

@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100 text-black font-['Noto Sans Armenian']">
       <HeroComponent />
-      <ServicesComponent />
-      <ProjectsComponent />
+      {/* <ServicesComponent />
+      <ProjectsComponent /> */}
       <CalculatorComponent />
       <ContactComponent />
     </div>
