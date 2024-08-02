@@ -1,4 +1,3 @@
-// i18n.js
 import i18n from "i18next"
 import { initReactI18next } from "react-i18next"
 
@@ -12,6 +11,8 @@ const detectLanguage = () => {
       return "hy"
     } else if (userLanguage.includes("es")) {
       return "es"
+    } else if (userLanguage.includes("ru")) {
+      return "ru"
     }
   }
   // Default to English if no language is detected or on the server side
@@ -78,6 +79,7 @@ const resources = {
       item_switch_2_places: "Switch 2 Places",
       // Unit translation
       unit_piece: "piece",
+      money_dram: "dram",
     },
   },
   es: {
@@ -140,6 +142,7 @@ const resources = {
       item_switch_2_places: "Interruptor de 2 lugares",
       // Unit translation
       unit_piece: "pieza",
+      money_dram: "dracma",
     },
   },
   hy: {
@@ -203,6 +206,70 @@ const resources = {
 
       // Unit translation
       unit_piece: "հատ",
+      money_dram: "դրամ",
+    },
+  },
+  ru: {
+    translation: {
+      // Translations for Russian
+      header_title: "ARM Electro",
+      home: "Главная",
+      services: "Услуги",
+      projects: "Проекты",
+      calculator: "Калькулятор",
+      contact: "Контакт",
+      hero_title: "Электрификация ваших строительных мечтаний",
+      hero_description:
+        "ARM Electro, ваш основной партнер по современным электрическим решениям в строительстве. Освещаем проекты с профессионализмом и инновациями.",
+      learn_more: "Узнать больше",
+      discover_expertise: "Откройте для себя наш опыт",
+      services_title: "Наши комплексные услуги",
+      installation: "Электромонтаж",
+      installation_description:
+        "Современное кабельное и монтажное обслуживание для всех типов зданий. Обеспечение безопасности и эффективности каждого соединения.",
+      maintenance: "Обслуживание и ремонт",
+      maintenance_description:
+        "Профилактическое обслуживание и быстрый ремонт для поддержания ваших систем на максимальной эффективности. Минимизация простоя, максимизация производительности.",
+      consultation: "Консультации экспертов",
+      consultation_description:
+        "Воспользуйтесь нашим многолетним опытом для получения беспрецедентных советов по электропланированию, энергоэффективности и экономически эффективным стратегиям.",
+      projects_title: "Наши заметные проекты",
+      project1_title: "Электропроводка жилого комплекса",
+      project1_description:
+        "Комплексный электромонтаж для роскошного жилого комплекса на 200 единиц.",
+      project2_title: "Модернизация промышленного объекта",
+      project2_description:
+        "Полная модернизация электрических систем для современного производственного предприятия.",
+      project3_title: "Умное офисное здание",
+      project3_description:
+        "Интеграция передовых умных электрических систем в 10-этажной штаб-квартире корпорации.",
+      calculator_title: "Калькулятор стоимости проекта",
+      calculate_costs: "Рассчитать стоимость вашего проекта",
+      description: "Описание",
+      unit: "Единица",
+      quantity: "Количество",
+      total_price: "Общая цена",
+      enable: "Включить",
+      total: "Общий",
+      calculate_total: "Рассчитать общий",
+      contact_title: "Связаться с нами",
+      contact_info: "Контактная информация",
+      message_us: "Отправить сообщение",
+      name: "Имя",
+      email: "Электронная почта",
+      message: "Сообщение",
+      send: "Отправить",
+      footer_title: "Электрические решения для ваших строительных проектов",
+      rights_reserved: "Все права защищены.",
+      // Item descriptions
+      item_automatic_switch: "Автоматический выключатель",
+      item_socket: "Розетка",
+      item_socket_with_earthing: "Розетка с заземлением",
+      item_switch_1_place: "Выключатель 1 место",
+      item_switch_2_places: "Выключатель 2 места",
+      // Unit translation
+      unit_piece: "штука",
+      money_dram: "драм",
     },
   },
 }

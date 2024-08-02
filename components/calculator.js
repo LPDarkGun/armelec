@@ -173,7 +173,7 @@ export default function CalculatorComponent() {
                 className="text-2xl md:text-3xl font-bold mt-4 md:mt-0 text-blue-700"
                 {...totalAnimation}
               >
-                {t("total")}: {grandTotal.toLocaleString()} դրամ
+                {t("total")}: {grandTotal.toLocaleString()} {t("money_dram")}
               </motion.div>
             </AnimatePresence>
             <motion.div

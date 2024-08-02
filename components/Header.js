@@ -28,8 +28,6 @@ export default function HeaderComponent() {
     i18n.changeLanguage(value)
   }
 
-  const menuItems = [{ id: "calculator", label: t("calculator") }]
-
   if (!mounted) {
     return null
   }
@@ -60,17 +58,6 @@ export default function HeaderComponent() {
             >
               {t("home")}
             </Link>
-            {menuItems.map((item) => (
-              <motion.a
-                key={item.id}
-                href={`/#${item.id}`}
-                className="text-base font-normal hover:text-primary transition duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {item.label}
-              </motion.a>
-            ))}
             <Link
               href="/services"
               className="text-base font-normal hover:text-primary transition duration-300"
@@ -94,9 +81,11 @@ export default function HeaderComponent() {
             <SelectContent>
               <SelectItem value="hy">Հայերեն</SelectItem>
               <SelectItem value="en">English</SelectItem>
+              <SelectItem value="ru">Русский</SelectItem>
               <SelectItem value="es">Español</SelectItem>
             </SelectContent>
           </Select>
+
           <div className="flex md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
@@ -106,18 +95,24 @@ export default function HeaderComponent() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <nav className="flex flex-col space-y-4 mt-8">
-                  {menuItems.map((item) => (
-                    <motion.a
-                      key={item.id}
-                      href={`#${item.id}`}
-                      className="text-2xl font-normal hover:text-primary transition duration-300"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.label}
-                    </motion.a>
-                  ))}
+                  <Link
+                    href="/"
+                    className="text-base font-normal hover:text-primary transition duration-300"
+                  >
+                    {t("home")}
+                  </Link>
+                  <Link
+                    href="/services"
+                    className="text-base font-normal hover:text-primary transition duration-300"
+                  >
+                    {t("services")}
+                  </Link>
+                  <Link
+                    href="/projects"
+                    className="text-base font-normal hover:text-primary transition duration-300"
+                  >
+                    {t("projects")}
+                  </Link>
                 </nav>
               </SheetContent>
             </Sheet>
