@@ -26,7 +26,7 @@ export default function HeaderComponent() {
     // { id: "services", label: t("services") },
     // { id: "projects", label: t("projects") },
     { id: "calculator", label: t("calculator") },
-    { id: "contact", label: t("contact") },
+    // { id: "contact", label: t("contact") },
   ]
 
   return (
@@ -74,7 +74,15 @@ export default function HeaderComponent() {
               href="/projects"
               className="text-base font-normal hover:text-blue-700 transition duration-300"
             >
-              {t("services")}
+              {t("projects")}
+            </Link>
+            <Link
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href={`#contact`}
+              className="text-base font-normal hover:text-blue-700 transition duration-300"
+            >
+              {t("contact")}
             </Link>
           </div>
           <Select
