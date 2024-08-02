@@ -29,13 +29,13 @@ export default function CalculatorComponent() {
   const { t } = useTranslation()
 
   const [items, setItems] = useState([
-    {
-      description: "item_automatic_switch",
-      unit: "unit_piece",
-      quantity: 0,
-      price: 2000,
-      enabled: false,
-    },
+    // {
+    //   description: "item_automatic_switch",
+    //   unit: "unit_piece",
+    //   quantity: 0,
+    //   price: 2000,
+    //   enabled: false,
+    // },
     {
       description: "item_socket",
       unit: "unit_piece",

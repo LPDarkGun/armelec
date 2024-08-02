@@ -73,14 +73,6 @@ export default function HeaderComponent() {
             <Link
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="/services"
-              className="text-base font-normal hover:text-blue-700 transition duration-300"
-            >
-              {t("services")}
-            </Link>
-            <Link
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               href="/projects"
               className="text-base font-normal hover:text-blue-700 transition duration-300"
             >
