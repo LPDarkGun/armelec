@@ -1,14 +1,14 @@
 import "@/styles/globals.css"
 import "../i18n"
-import Footer from "@/components/Footer"
-import Header from "@/components/Header"
+import HeaderComponent from "@/components/Header"
+import FooterComponent from "@/components/Footer"
 
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <Header />
+      <HeaderComponent />
       <Component {...pageProps} />
-      <Footer />
+      <FooterComponent />
     </>
   )
 }

@@ -1,5 +1,3 @@
-// components/Header.js
-
 import React, { useState } from "react"
 import { motion } from "framer-motion"
 import { useTranslation } from "react-i18next"
