@@ -21,13 +21,7 @@ export default function HeaderComponent() {
     i18n.changeLanguage(value)
   }
 
-  const menuItems = [
-    { id: "home", label: t("home") },
-    // { id: "services", label: t("services") },
-    // { id: "projects", label: t("projects") },
-    { id: "calculator", label: t("calculator") },
-    // { id: "contact", label: t("contact") },
-  ]
+  const menuItems = [{ id: "calculator", label: t("calculator") }]
 
   return (
     <motion.header
@@ -49,6 +43,14 @@ export default function HeaderComponent() {
         <div className="flex items-center space-x-4">
           {/* Navigation Menu for Larger Screens */}
           <div className="hidden md:flex items-center space-x-4">
+            <Link
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="/"
+              className="text-base font-normal hover:text-blue-700 transition duration-300"
+            >
+              {t("home")}
+            </Link>
             {menuItems.map((item) => (
               <motion.a
                 key={item.id}
@@ -71,18 +73,18 @@ export default function HeaderComponent() {
             <Link
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="/projects"
+              href="/services"
               className="text-base font-normal hover:text-blue-700 transition duration-300"
             >
-              {t("projects")}
+              {t("services")}
             </Link>
             <Link
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href={`#contact`}
+              href="/projects"
               className="text-base font-normal hover:text-blue-700 transition duration-300"
             >
-              {t("contact")}
+              {t("projects")}
             </Link>
           </div>
           <Select
