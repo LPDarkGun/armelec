@@ -160,12 +160,12 @@ export default function CalculatorComponent() {
                     <TableHead className="text-base md:text-lg">
                       {t("quantity")}
                     </TableHead>
-                    <TableHead className="text-base md:text-lg">
+                    {/* <TableHead className="text-base md:text-lg">
                       {t("total_price")}
                     </TableHead>
                     <TableHead className="text-base md:text-lg">
                       {t("enable")}
-                    </TableHead>
+                    </TableHead> */}
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -188,7 +188,7 @@ export default function CalculatorComponent() {
                           className="border-blue-600 w-20 md:w-24"
                         />
                       </TableCell>
-                      <TableCell>
+                      {/* <TableCell>
                         {(item.quantity * item.price).toLocaleString()} դրամ
                       </TableCell>
                       <TableCell>
@@ -196,7 +196,7 @@ export default function CalculatorComponent() {
                           checked={item.enabled}
                           onCheckedChange={() => toggleItem(index)}
                         />
-                      </TableCell>
+                      </TableCell> */}
                     </TableRow>
                   ))}
                 </TableBody>
