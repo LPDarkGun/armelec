@@ -2,6 +2,22 @@
 import i18n from "i18next"
 import { initReactI18next } from "react-i18next"
 
+// Function to detect the language based on the user's browser setting
+const detectLanguage = () => {
+  if (typeof window !== "undefined") {
+    // This code will only run on the client side
+    const userLanguage = navigator.language || navigator.userLanguage
+
+    if (userLanguage.includes("hy")) {
+      return "hy"
+    } else if (userLanguage.includes("es")) {
+      return "es"
+    }
+  }
+  // Default to English if no language is detected or on the server side
+  return "en"
+}
+
 const resources = {
   en: {
     translation: {
@@ -200,19 +216,6 @@ const resources = {
       unit_piece: "հատ",
     },
   },
-}
-
-// Function to detect the language based on the user's browser setting
-const detectLanguage = () => {
-  const userLanguage = navigator.language || navigator.userLanguage
-
-  if (userLanguage.includes("hy")) {
-    return "hy"
-  } else if (userLanguage.includes("es")) {
-    return "es"
-  } else {
-    return "en"
-  }
 }
 
 i18n.use(initReactI18next).init({
