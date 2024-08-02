@@ -64,7 +64,6 @@ export default function HeaderComponent() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="/services"
-              target="_blank"
               className="text-base font-normal hover:text-blue-700 transition duration-300"
             >
               {t("services")}
@@ -73,7 +72,6 @@ export default function HeaderComponent() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="/projects"
-              target="_blank"
               className="text-base font-normal hover:text-blue-700 transition duration-300"
             >
               {t("services")}
