@@ -30,6 +30,7 @@ const resources = {
       hero_title: "Electrifying Your Construction Dreams",
       hero_description:
         "ARM Electro, your primary partner for modern electrical solutions in construction. Illuminating projects with expertise and innovation.",
+      learn_more: "Learn more",
       discover_expertise: "Discover Our Expertise",
       services_title: "Our Comprehensive Services",
       installation: "Electrical Installation",
@@ -91,6 +92,7 @@ const resources = {
       hero_title: "Electrificando tus sueños de construcción",
       hero_description:
         "ARM Electro, su socio principal para soluciones eléctricas modernas en la construcción. Iluminando proyectos con experiencia e innovación.",
+      learn_more: "aprende más",
       discover_expertise: "Descubre nuestra experiencia",
       services_title: "Nuestros servicios integrales",
       installation: "Instalación eléctrica",
@@ -152,6 +154,7 @@ const resources = {
       hero_title: "Ձեր շինարարական երազանքների էլեկտրականացում",
       hero_description:
         "ARM Electro՝ Ձեր հիմնական գործընկերը շինարարության մեջ ժամանակակից էլեկտրական լուծումների համար: Լուսավորում ենք նախագծերը փորձառությամբ և նորարարությամբ:",
+      learn_more: "իմանալ ավելին",
       discover_expertise: "Բացահայտեք մեր փորձառությունը",
       services_title: "Մեր համապարփակ ծառայությունները",
       installation: "Էլեկտրական տեղադրում",

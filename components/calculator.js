@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { motion } from "framer-motion"
+import React, { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import {
   Card,
@@ -17,7 +17,6 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Input } from "@/components/ui/input"
-import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
 
 const fadeIn = {
@@ -25,42 +24,42 @@ const fadeIn = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 }
 
+const totalAnimation = {
+  initial: { scale: 0.8, opacity: 0 },
+  animate: { scale: 1, opacity: 1 },
+  exit: { scale: 0.8, opacity: 0 },
+  transition: { type: "spring", stiffness: 300, damping: 25 },
+}
+
 export default function CalculatorComponent() {
   const { t } = useTranslation()
 
   const [items, setItems] = useState([
-    // {
-    //   description: "item_automatic_switch",
-    //   unit: "unit_piece",
-    //   quantity: 0,
-    //   price: 2000,
-    //   enabled: false,
-    // },
     {
       description: "item_socket",
       unit: "unit_piece",
-      quantity: 0,
+      quantity: "0",
       price: 5000,
       enabled: false,
     },
     {
       description: "item_socket_with_earthing",
       unit: "unit_piece",
-      quantity: 0,
+      quantity: "0",
       price: 5000,
       enabled: false,
     },
     {
       description: "item_switch_1_place",
       unit: "unit_piece",
-      quantity: 0,
+      quantity: "0",
       price: 5000,
       enabled: false,
     },
     {
       description: "item_switch_2_places",
       unit: "unit_piece",
-      quantity: 0,
+      quantity: "0",
       price: 5000,
       enabled: false,
     },
@@ -70,24 +69,36 @@ export default function CalculatorComponent() {
 
   const handleInputChange = (index, field, value) => {
     const newItems = [...items]
-    newItems[index][field] = value === "" ? 0 : parseFloat(value)
+    if (value === "") {
+      newItems[index][field] = "0"
+    } else {
+      newItems[index][field] = value.replace(/^0+(?=\d)/, "")
+    }
     setItems(newItems)
   }
 
-  // const toggleItem = (index) => {
-  //   const newItems = [...items]
-  //   newItems[index].enabled = !newItems[index].enabled
-  //   newItems[index].quantity = newItems[index].enabled ? 1 : 0
-  //   setItems(newItems)
-  // }
-
   const calculateGrandTotal = () => {
-    const total = items.reduce(
-      (acc, item) => acc + item.quantity * item.price,
-      0
-    )
+    const total = items.reduce((acc, item) => {
+      const quantity =
+        item.quantity.trim() === "" ? 0 : parseFloat(item.quantity)
+      return acc + quantity * item.price
+    }, 0)
     setGrandTotal(total)
   }
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Enter") {
+        calculateGrandTotal()
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [items])
 
   return (
     <motion.section
@@ -96,17 +107,17 @@ export default function CalculatorComponent() {
       whileInView="visible"
       viewport={{ once: true }}
       variants={fadeIn}
-      className="py-16 md:py-24 bg-white"
+      className="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-indigo-100"
     >
       <div className="container mx-auto px-4">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-blue-600"
+          className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-blue-700"
           variants={fadeIn}
         >
           {t("calculator_title")}
         </motion.h2>
-        <Card className="w-full max-w-4xl mx-auto shadow-2xl border-blue-600 border-2">
-          <CardHeader className="bg-blue-600 text-white">
+        <Card className="w-full max-w-4xl mx-auto shadow-2xl border-blue-500 border-2 overflow-hidden bg-white bg-opacity-90 backdrop-blur-sm">
+          <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
             <CardTitle className="text-2xl md:text-3xl font-bold text-center">
               {t("calculate_costs")}
             </CardTitle>
@@ -116,70 +127,63 @@ export default function CalculatorComponent() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="text-base md:text-lg">
+                    <TableHead className="text-base md:text-lg font-semibold text-blue-700">
                       {t("description")}
                     </TableHead>
-                    <TableHead className="text-base md:text-lg">
+                    <TableHead className="text-base md:text-lg font-semibold text-blue-700">
                       {t("unit")}
                     </TableHead>
-                    <TableHead className="text-base md:text-lg">
+                    <TableHead className="text-base md:text-lg font-semibold text-blue-700">
                       {t("quantity")}
                     </TableHead>
-                    {/* <TableHead className="text-base md:text-lg">
-                      {t("total_price")}
-                    </TableHead>
-                    <TableHead className="text-base md:text-lg">
-                      {t("enable")}
-                    </TableHead> */}
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {items.map((item, index) => (
-                    <TableRow key={index}>
-                      <TableCell>{t(item.description)}</TableCell>
-                      <TableCell>{t(item.unit)}</TableCell>
+                    <TableRow
+                      key={index}
+                      className="hover:bg-blue-50 transition-colors duration-200"
+                    >
+                      <TableCell className="font-medium text-blue-600">
+                        {t(item.description)}
+                      </TableCell>
+                      <TableCell className="text-indigo-600">
+                        {t(item.unit)}
+                      </TableCell>
                       <TableCell>
                         <Input
                           type="number"
                           value={item.quantity}
                           onChange={(e) =>
-                            handleInputChange(
-                              index,
-                              "quantity",
-                              parseFloat(e.target.value)
-                            )
+                            handleInputChange(index, "quantity", e.target.value)
                           }
-                          className="border-blue-600 w-20 md:w-24"
+                          className="border-blue-400 w-20 md:w-24 focus:ring-2 focus:ring-blue-500 transition-all duration-300"
                         />
                       </TableCell>
-                      {/* <TableCell>
-                        {(item.quantity * item.price).toLocaleString()} դրամ
-                      </TableCell>
-                      <TableCell>
-                        <Switch
-                          checked={item.enabled}
-                          onCheckedChange={() => toggleItem(index)}
-                        />
-                      </TableCell> */}
                     </TableRow>
                   ))}
                 </TableBody>
               </Table>
             </div>
           </CardContent>
-          <CardFooter className="flex flex-col md:flex-row justify-between items-center">
+          <CardFooter className="flex flex-col md:flex-row justify-between items-center bg-gradient-to-r from-blue-100 to-indigo-100 p-6">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={grandTotal}
+                className="text-2xl md:text-3xl font-bold mt-4 md:mt-0 text-blue-700"
+                {...totalAnimation}
+              >
+                {t("total")}: {grandTotal.toLocaleString()} դրամ
+              </motion.div>
+            </AnimatePresence>
             <motion.div
-              className="text-xl md:text-2xl font-bold mt-4 md:mt-0"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="mt-4 md:mt-0"
             >
-              {t("total")}: {grandTotal.toLocaleString()} դրամ
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 onClick={calculateGrandTotal}
-                className="bg-blue-600 text-white hover:bg-blue-700 transition duration-300 mt-4 md:mt-0"
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 transition duration-300 px-6 py-3 rounded-full shadow-lg text-lg"
               >
                 {t("calculate_total")}
               </Button>

@@ -1,4 +1,6 @@
-import React, { useState } from "react"
+"use client"
+
+import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { Button } from "@/components/ui/button"
@@ -16,6 +18,11 @@ import Link from "next/link"
 export default function HeaderComponent() {
   const { t, i18n } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const handleLanguageChange = (value) => {
     i18n.changeLanguage(value)
@@ -23,17 +30,21 @@ export default function HeaderComponent() {
 
   const menuItems = [{ id: "calculator", label: t("calculator") }]
 
+  if (!mounted) {
+    return null
+  }
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white text-black p-4 md:p-6 sticky top-0 z-50 shadow-lg"
+      className="bg-background text-foreground p-4 md:p-6 sticky top-0 z-50 shadow-lg"
     >
       <div className="container mx-auto flex justify-between items-center">
         {/* Header Title */}
         <motion.h1
-          className="text-2xl md:text-3xl font-semibold text-black select-none cursor-default"
+          className="text-2xl md:text-3xl font-semibold select-none cursor-default"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
@@ -44,18 +55,16 @@ export default function HeaderComponent() {
           {/* Navigation Menu for Larger Screens */}
           <div className="hidden md:flex items-center space-x-4">
             <Link
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               href="/"
-              className="text-base font-normal hover:text-blue-700 transition duration-300"
+              className="text-base font-normal hover:text-primary transition duration-300"
             >
               {t("home")}
             </Link>
             {menuItems.map((item) => (
               <motion.a
                 key={item.id}
-                href={`#${item.id}`}
-                className="text-base font-normal hover:text-blue-700 transition duration-300"
+                href={`/#${item.id}`}
+                className="text-base font-normal hover:text-primary transition duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -63,18 +72,14 @@ export default function HeaderComponent() {
               </motion.a>
             ))}
             <Link
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               href="/services"
-              className="text-base font-normal hover:text-blue-700 transition duration-300"
+              className="text-base font-normal hover:text-primary transition duration-300"
             >
               {t("services")}
             </Link>
             <Link
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               href="/projects"
-              className="text-base font-normal hover:text-blue-700 transition duration-300"
+              className="text-base font-normal hover:text-primary transition duration-300"
             >
               {t("projects")}
             </Link>
@@ -83,7 +88,7 @@ export default function HeaderComponent() {
             onValueChange={handleLanguageChange}
             defaultValue={i18n.language}
           >
-            <SelectTrigger className="w-32 bg-blue-600 text-white border-none">
+            <SelectTrigger className="w-32 bg-primary text-primary-foreground border-none">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -105,7 +110,7 @@ export default function HeaderComponent() {
                     <motion.a
                       key={item.id}
                       href={`#${item.id}`}
-                      className="text-2xl font-normal hover:text-lightCoral transition duration-300"
+                      className="text-2xl font-normal hover:text-primary transition duration-300"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setIsOpen(false)}
